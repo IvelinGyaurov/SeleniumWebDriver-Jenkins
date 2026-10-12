@@ -13,11 +13,16 @@ namespace TestProject2
         [SetUp]
         public void SetUp()
         {
-            // Create object of ChromeDriver
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--headless=new");
+            options.AddArgument("--window-size=1920,1080");
+            options.AddArgument("--disable-gpu");
 
-            // Add implicit wait
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver = new ChromeDriver(options);
+
+
+        // Add implicit wait
+        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
         [Test]
